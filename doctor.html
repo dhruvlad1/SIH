@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="doctor.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Panchakarma</h2>
+        <ul>
+            <li onclick="showSection('dashboard')">Dashboard</li>
+            <li onclick="showSection('appointments')">Appointments</li>
+            <li onclick="showSection('patients')">Patients</li>
+            <li onclick="showSection('progress')">Therapy Progress</li>
+            <li onclick="showSection('profile')">Profile</li>
+            <li onclick="showSection('notifications')">Notifications</li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <!-- Dashboard Overview -->
+        <section id="dashboard" class="active">
+            <h1>Welcome, Dr. Sharma</h1>
+            <div class="tiles">
+                <div class="tile">
+                    <h3>Patients Today</h3>
+                    <p>8</p>
+                </div>
+                <div class="tile">
+                    <h3>Pending Appointments</h3>
+                    <p>3</p>
+                </div>
+                <div class="tile">
+                    <h3>Completed Therapies</h3>
+                    <p>5</p>
+                </div>
+                <div class="tile">
+                    <h3>Notifications</h3>
+                    <p>2</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointments -->
+        <section id="appointments">
+            <h1>Appointments</h1>
+            <div class="card">
+                <h3>Today's Schedule</h3>
+                <ul>
+                    <li>09:00 - John Doe - Abhyanga</li>
+                    <li>10:30 - Jane Smith - Shirodhara</li>
+                    <li>12:00 - Mike Lee - Nasya</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Manage Appointments</h3>
+                <div class="calendar-controls">
+                    <button id="prevMonth">&lt; Prev</button>
+                    <span id="monthYear"></span>
+                    <button id="nextMonth">Next &gt;</button>
+                </div>
+                <div id="calendar"></div>
+            </div>
+        </section>
+
+        <!-- Patients -->
+        <section id="patients">
+            <h1>Patients</h1>
+            <div class="patient-card">
+                <h3>John Doe</h3>
+                <p>Age: 32</p>
+                <p>Last Therapy: 20 Sep 2025 - Abhyanga</p>
+                <p>Next Appointment: 25 Sep 2025</p>
+                <button>View Full Records</button>
+            </div>
+            <div class="patient-card">
+                <h3>Jane Smith</h3>
+                <p>Age: 28</p>
+                <p>Last Therapy: 22 Sep 2025 - Shirodhara</p>
+                <p>Next Appointment: 26 Sep 2025</p>
+                <button>View Full Records</button>
+            </div>
+        </section>
+
+        <!-- Therapy Progress -->
+        <section id="progress">
+            <h1>Therapy Progress</h1>
+            <div class="card">
+                <h3>John Doe</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 60%"></div>
+                </div>
+                <p>60% completed</p>
+            </div>
+            <div class="card">
+                <h3>Jane Smith</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%"></div>
+                </div>
+                <p>80% completed</p>
+            </div>
+        </section>
+
+        <!-- Profile -->
+        <section id="profile">
+            <h1>Profile</h1>
+            <div class="profile-card">
+                <div class="avatar">D</div>
+                <div class="profile-info">
+                    <p><strong>Name:</strong> Dr. Sharma</p>
+                    <p><strong>Specialization:</strong> Panchakarma</p>
+                    <p><strong>Email:</strong> dr.sharma@example.com</p>
+                    <p><strong>Working Hours:</strong> 9 AM - 5 PM</p>
+                    <button>Update Profile</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notifications -->
+        <section id="notifications">
+            <h1>Notifications</h1>
+            <ul>
+                <li>New appointment request from Mike Lee on 28 Sep 2025</li>
+                <li>Patient Jane Smith sent a message</li>
+            </ul>
+        </section>
+    </div>
+
+    <script src="doctor.js"></script>
+</body>
+</html>
