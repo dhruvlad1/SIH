@@ -110,3 +110,58 @@
   padding: 3rem;
   border-radius: 10px;
 }
+.footer {
+  background: linear-gradient(135deg, #a8d5ba, #6fb98f); /* Herbal tones */
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #f5fffa;
+}
+
+.footer-text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-links {
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  color: #f0fff0;
+  text-decoration: none;
+  margin: 0 0.75rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #e1f5e0;
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-text {
+    font-size: 0.9rem;
+  }
+  .footer-links a {
+    display: inline-block;
+    margin: 0.4rem;
+  }
+}
