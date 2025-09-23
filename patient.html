@@ -1,157 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-s cale=1.0">
-    <title>Patient Dashboard</title>
-    <link rel="stylesheet" href="patient.css">
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="patient.css">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Panchakarma</h2>
-        <ul>
-            <li onclick="showSection('dashboard')">Dashboard</li>
-            <li onclick="showSection('appointments')">Appointments</li>
-            <li onclick="showSection('records')">Medical Records</li>
-            <li onclick="showSection('progress')">Progress</li>
-            <li onclick="showSection('profile')">Profile</li>
-            <li onclick="showSection('notifications')">Notifications</li>
-        </ul>
-    </div>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Panchakarma</h2>
+            <button id="darkModeToggle">🌙 Dark Mode</button>
+            <ul>
+                <li onclick="showSection('dashboard')">Dashboard</li>
+                <li onclick="showSection('appointments')">Appointments</li>
+                <li onclick="showSection('records')">Medical Records</li>
+                <li onclick="showSection('progress')">Progress</li>
+                <li onclick="showSection('profile')">Profile</li>
+                <li onclick="showSection('notifications')">Notifications</li>
+            </ul>
+        </div>
 
-    <div class="main">
-                <section id="dashboard" class="active">
-            <h1>Welcome, Patient</h1>
-            <div class="tiles">
-                <div class="tile">
-                    <h3>Next Appointment</h3>
-                    <p>25 Sep 2025</p>
-                </div>
-                <div class="tile">
-                    <h3>Therapies Completed</h3>
-                    <p>5</p>
-                </div>
-                <div class="tile">
-                    <h3>Active Prescriptions</h3>
-                    <p>3</p>
-                </div>
-                <div class="tile">
-                    <h3>Notifications</h3>
-                    <p>2</p>
-                </div>
-            </div>
-            <div class="quick-actions">
-                <button onclick="showSection('appointments')">Book Appointment</button>
-                <button onclick="showSection('records')">View Prescriptions</button>
-            </div>
-        </section>
+        <!-- Main content -->
+        <div class="main">
+            <!-- Dashboard -->
+            <section id="dashboard" class="active">
+                <h1>Welcome, Patient</h1>
+                <div class="tiles">
+                    <div class="tile">
+                        <h3>Next Appointment</h3>
+                        <p>25 Sep 2025</p>
+                    </div>
+                    <div class="tile">
+                        <h3>Therapies Completed</h3>
+                        <p>5</p>
+                    </div>
+                    <div class="tile">
+                        <h3>Active Prescriptions</h3>
+                        <p>3</p>
+                    </div>
+                    <div class="tile">
+                        <h3>Notifications</h3>
+                        <p>2</p>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <button onclick="showSection('appointments')">Book Appointment</button>
+                    <button onclick="showSection('records')">View Prescriptions</button>
+                </div>
+            </section>
 
-                <section id="appointments">
-            <h1>Appointments</h1>
-            <div class="card">
-                <h3>Upcoming</h3>
-                <p>Abhyanga Massage - 25 Sep 2025</p>
-                <p>Therapist: Dr. Sharma</p>
-                <button>Cancel / Reschedule</button>
-            </div>
-            <div class="card">
-                <h3>Book New Appointment</h3>
-                <div class="calendar-controls">
-                    <button id="prevMonth">&lt; Prev</button>
-                    <span id="monthYear"></span>
-                    <button id="nextMonth">Next &gt;</button>
-                </div>
-                <div id="calendar"></div>
-                <label>Therapy Type:</label>
-                <select>
-                    <option>Virechana</option>
-                    <option>Vamana</option>
-                    <option>Nasya</option>
-                    <option>Basti</option>
-                    <option>Raktamokshana</option>
-                </select>
-                <button>Book Now</button>
-            </div>
-        </section>
+            <!-- Appointments -->
+            <section id="appointments">
+                <h1>Appointments</h1>
+                <div class="card">
+                    <h3>Upcoming</h3>
+                    <p>Abhyanga Massage - 25 Sep 2025</p>
+                    <p>Therapist: Dr. Sharma</p>
+                    <button>Cancel / Reschedule</button>
+                </div>
+                <div class="card">
+                    <h3>Book New Appointment</h3>
+                    <div class="calendar-controls">
+                        <button id="prevMonth">&lt; Prev</button>
+                        <span id="monthYear"></span>
+                        <button id="nextMonth">Next &gt;</button>
+                    </div>
+                    <div id="calendar"></div>
+                    <label>Therapy Type:</label>
+                    <select>
+                        <option>Abhyanga</option>
+                        <option>Shirodhara</option>
+                        <option>Nasya</option>
+                    </select>
+                    <button>Book Now</button>
+                </div>
+            </section>
 
-                <section id="records">
-            <h1>Medical Records</h1>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span>10 Sep 2025</span>
-                    <p>Abhyanga Massage</p>
-                </div>
-                <div class="timeline-item">
-                    <span>05 Sep 2025</span>
-                    <p>Shirodhara</p>
-                </div>
-                <div class="timeline-item">
-                    <span>01 Sep 2025</span>
-                    <p>Nasya Therapy</p>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Prescriptions</h3>
-                <ul>
-                    <li>Herbal Oil - 2 tbsp daily</li>
-                    <li>Chyawanprash - 1 tsp morning</li>
-                </ul>
-            </div>
-        </section>
+            <!-- Medical Records -->
+            <section id="records">
+                <h1>Medical Records</h1>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span>10 Sep 2025</span>
+                        <p>Abhyanga Massage</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span>05 Sep 2025</span>
+                        <p>Shirodhara</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span>01 Sep 2025</span>
+                        <p>Nasya Therapy</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Prescriptions</h3>
+                    <ul>
+                        <li>Herbal Oil - 2 tbsp daily</li>
+                        <li>Chyawanprash - 1 tsp morning</li>
+                    </ul>
+                </div>
+            </section>
 
-                <section id="progress">
-            <h1>Progress</h1>
-            <div class="card">
-                <h3>Therapy Progress</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 70%"></div>
-                </div>
-                <p>70% completed</p>
-            </div>
-        </section>
+            <!-- Progress -->
+            <section id="progress">
+                <h1>Progress</h1>
+                <div class="card">
+                    <h3>Therapy Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%"></div>
+                    </div>
+                    <p>70% completed</p>
+                </div>
+            </section>
 
-                <section id="profile">
-            <h1>Profile</h1>
-            <div class="profile-card">
-                <div class="avatar">P</div>
-                <div class="profile-info">
-                    <p><strong>Name:</strong> Patient Name</p>
-                    <p><strong>Age:</strong> 30</p>
-                    <p><strong>Email:</strong> patient@example.com</p>
-                    <p><strong>Preferred Therapist:</strong> Dr. Sharma</p>
-                    <button>Update Profile</button>
-                </div>
-            </div>
-        </section>
+            <!-- Profile -->
+            <section id="profile">
+                <h1>Profile</h1>
+                <div class="profile-card">
+                    <div class="avatar">P</div>
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> Patient Name</p>
+                        <p><strong>Age:</strong> 30</p>
+                        <p><strong>Email:</strong> patient@example.com</p>
+                        <p><strong>Preferred Therapist:</strong> Dr. Sharma</p>
+                        <button>Update Profile</button>
+                    </div>
+                </div>
+            </section>
 
-                <section id="notifications">
-            <h1>Notifications</h1>
-            <ul>
-                <li>Your appointment on 25 Sep 2025 is confirmed.</li>
-                <li>New prescription added by Dr. Sharma.</li>
-            </ul>
-        </section>
-    </div>
+            <!-- Notifications -->
+            <section id="notifications">
+                <h1>Notifications</h1>
+                <ul>
+                    <li>Your appointment on 25 Sep 2025 is confirmed.</li>
+                    <li>New prescription added by Dr. Sharma.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
 
-    <script src="patient.js"></script>
-<footer>
+    <!-- Footer -->
     <footer class="footer">
-  <div class="footer-content">
-    <h2 class="footer-logo">🌿 Panchakarma Wellness</h2>
-    <p class="footer-text">
-      Healing through nature’s wisdom – Ayurveda for a balanced life.
-    </p>
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#privacy">Privacy Policy</a>
-    </div>
-    
-      <p class="footer-copy">&copy; 2025 Panchakarma Wellness</p>
-    </div>
+        <p>&copy; 2025 Panchakarma Wellness. All rights reserved.</p>
     </footer>
+    <script src="patient.js"></script>
 </body>
 </html>
