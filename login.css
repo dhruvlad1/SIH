@@ -4,7 +4,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: rgb(136, 183, 224);
 }
 
 .login-container {
@@ -52,7 +51,6 @@ body {
 .btn-login {
   width: 100%;
   margin-top: 1rem;
-  background-color: yellowgreen;
 }
 
 .error-message {

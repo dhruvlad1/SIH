@@ -61,6 +61,7 @@
       );
 
       if (user) {
+        alert(`Welcome ${user.name}! Logged in as ${role}.`);
         // Redirect to dashboards based on role
         if (role === 'doctor') {
           window.location.href = 'doctor.html';
