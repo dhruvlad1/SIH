@@ -46,6 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // default
   showSection('dashboard');
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+  // Redirect to login page
+  window.location.href = 'login.html';
+});
+document.getElementById('home').addEventListener('click', () => {
+  // Redirect to login page
+  window.location.href = 'index.html';
+});
+
 
   /* ---------- Dark mode toggle ---------- */
   const toggleDark = $('#toggleDark');
