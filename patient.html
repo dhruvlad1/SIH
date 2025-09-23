@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-s cale=1.0">
-    <title>Patient Dashboard</title>
-    <link rel="stylesheet" href="patient.css">
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+
+    <link rel="stylesheet" href="patient.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
+        <aside class="sidebar">
             <h2>Panchakarma</h2>
             <button id="darkModeToggle">🌙 Dark Mode</button>
-            <ul>
-                <li onclick="showSection('dashboard')">Dashboard</li>
-                <li onclick="showSection('appointments')">Appointments</li>
-                <li onclick="showSection('records')">Medical Records</li>
-                <li onclick="showSection('progress')">Progress</li>
-                <li onclick="showSection('profile')">Profile</li>
-                <li onclick="showSection('notifications')">Notifications</li>
-            </ul>
-        </div>
+            <nav>
+                <ul>
+                    <li data-section="dashboard" class="active">Dashboard</li>
+                    <li data-section="appointments">Appointments</li>
+                    <li data-section="records">Medical Records</li>
+                    <li data-section="progress">Progress</li>
+                    <li data-section="profile">Profile</li>
+                    <li data-section="notifications">Notifications</li>
+                </ul>
+            </nav>
+        </aside>
 
-        <!-- Main content -->
-        <div class="main">
-            <!-- Dashboard -->
+        <main class="main">
             <section id="dashboard" class="active">
                 <h1>Welcome, Patient</h1>
                 <div class="tiles">
@@ -48,12 +47,11 @@
                     </div>
                 </div>
                 <div class="quick-actions">
-                    <button onclick="showSection('appointments')">Book Appointment</button>
-                    <button onclick="showSection('records')">View Prescriptions</button>
+                    <button data-action="appointments">Book Appointment</button>
+                    <button data-action="records">View Prescriptions</button>
                 </div>
             </section>
 
-            <!-- Appointments -->
             <section id="appointments">
                 <h1>Appointments</h1>
                 <div class="card">
@@ -80,7 +78,6 @@
                 </div>
             </section>
 
-            <!-- Medical Records -->
             <section id="records">
                 <h1>Medical Records</h1>
                 <div class="timeline">
@@ -106,7 +103,6 @@
                 </div>
             </section>
 
-            <!-- Progress -->
             <section id="progress">
                 <h1>Progress</h1>
                 <div class="card">
@@ -118,7 +114,6 @@
                 </div>
             </section>
 
-            <!-- Profile -->
             <section id="profile">
                 <h1>Profile</h1>
                 <div class="profile-card">
@@ -133,7 +128,6 @@
                 </div>
             </section>
 
-            <!-- Notifications -->
             <section id="notifications">
                 <h1>Notifications</h1>
                 <ul>
@@ -141,14 +135,13 @@
                     <li>New prescription added by Dr. Sharma.</li>
                 </ul>
             </section>
-        </div>
+        </main>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 Panchakarma Wellness. All rights reserved.</p>
     </footer>
 
-    <script src="patient.js"></script>
+    <script src="patient.js"></script>
 </body>
 </html>
