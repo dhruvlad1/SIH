@@ -3,14 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panchakarma Login</title>
-  <link rel="stylesheet" href="login.css">
-  <link rel="stylesheet" href="main.css">
+  <title>Panchakarma Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
 
+    body {
+      background-image: url("ayurveda-india-symbol-indian-background-theme_1279562-5309.jpg");
+      background-size: contain;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    header {
+      background-color: rgba(46,125,50,0.85);
+      color:white;
+      padding: 20px;
+      text-align:center;
+      z-index: 10;
+    }
+
+    header h1 { font-size:32px; }
+
+    .hero {
+      display:flex;
+      flex-direction: column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding: 60px 20px;
+      flex:1;
+    }
+
+    .hero h2 { color:#11da1f; font-size:28px; margin-bottom:20px; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+    .hero p { font-size:18px; color:#0f110f; max-width:600px; margin-bottom:40px; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); }
+
+    /* Login Container */
+    .login-container {
+      background-color: rgba(255,255,255,0.95);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      width: 360px;
+      max-width:90%;
+      text-align:center;
+      margin-bottom:40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-container:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .login-container h3 { color:#2e7d32; margin-bottom:25px; }
+
+    .input-group { margin-bottom:20px; text-align:left; }
+    .input-group label { display:block; margin-bottom:5px; color:#333; font-weight:500; }
+    .input-group input, .input-group select { width:100%; padding:10px 15px; border-radius:8px; border:1px solid #bdbdbd; font-size:16px; transition: 0.3s; }
+    .input-group input:focus, .input-group select:focus { border-color:#2e7d32; outline:none; box-shadow:0 0 5px rgba(46,125,50,0.4); }
+
+    .login-btn { width:100%; padding:12px; border:none; background-color:#2e7d32; color:white; border-radius:8px; cursor:pointer; font-size:16px; transition:0.3s; }
+    .login-btn:hover { background-color:#1b5e20; transform: translateY(-2px); }
+
+    .error-message { color:red; font-size:14px; margin-bottom:15px; display:none; text-align:center; }
+
+    /* Features Section */
+    .features {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      padding:40px 20px;
+      gap:20px;
+      z-index: 10;
+    }
+
+    .feature-card {
+      background:white;
+      border-radius:15px;
+      padding:20px;
+      width:250px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.15);
+      text-align:center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow:0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .feature-card h4 { color:#2e7d32; margin-bottom:10px; }
+    .feature-card p { color:#555; font-size:14px; }
+
+    footer {
+      text-align:center;
+      padding:20px;
+      background: rgba(27,94,32,0.85);
+      color:white;
+      font-size:14px;
+      z-index: 10;
+    }
+
+    @media (max-width: 400px) {
+      .login-container { padding: 35px 20px; }
+      .features { flex-direction: column; align-items:center; }
+    }
+  </style>
 </head>
 <body>
+
+<header>
+  <h1>Panchakarma Wellness Portal</h1>
+</header>
+
+<section class="hero">
+  <h2>Welcome to Your Personalized Panchakarma Experience</h2>
+  <p>Detox, rejuvenate, and manage your health with our integrated Ayurvedic wellness platform.</p>
   <div class="login-container">
-    <h2>Login to Your Account</h2>
+    <h3>Login to Your Account</h3>
     <div class="error-message" id="error-message"></div>
     <form id="loginForm">
       <div class="input-group">
@@ -30,50 +143,55 @@
         </select>
       </div>
       <button type="submit" class="login-btn">Login</button>
+      <a href="signup.html">Not Registered ? Sign up Now</a>
     </form>
-    <p class="signup-link">
-      Don’t have an account? <a href="signup.html">Sign Up</a>
-    </p>
   </div>
+</section>
 
-  <script>
-    const loginForm = document.getElementById('loginForm');
-    const errorMessage = document.getElementById('error-message');
+<section class="features">
+  <div class="feature-card">
+    <h4>Detox Programs</h4>
+    <p>Customized Panchakarma therapies to cleanse and rejuvenate your body naturally.</p>
+  </div>
+  <div class="feature-card">
+    <h4>Doctor Consultation</h4>
+    <p>Connect with certified Ayurvedic doctors for personalized treatment plans.</p>
+  </div>
+  <div class="feature-card">
+    <h4>Patient Management</h4>
+    <p>Track health records, appointments, and therapy progress seamlessly.</p>
+  </div>
+</section>
 
-    loginForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const role = document.getElementById('role').value;
+<footer>
+  &copy; 2025 Panchakarma Wellness. All rights reserved.
+</footer>
 
-      if (!email || !password || !role) {
-        errorMessage.textContent = 'Please fill all the fields!';
-        errorMessage.style.display = 'block';
-        return;
-      }
+<script>
+const loginForm = document.getElementById('loginForm');
+const errorMessage = document.getElementById('error-message');
 
-      errorMessage.style.display = 'none';
+loginForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const role = document.getElementById('role').value;
 
-      // Retrieve users from localStorage
-      const users = JSON.parse(localStorage.getItem('users') || '[]');
-      const user = users.find(
-        u => u.email === email && u.password === password && u.role === role
-      );
+  if(!email || !password || !role){
+    errorMessage.textContent = 'Please fill all the fields!';
+    errorMessage.style.display = 'block';
+    return;
+  }
 
-      if (user) {
-        alert(`Welcome ${user.name}! Logged in as ${role}.`);
-        // Redirect to dashboards based on role
-        if (role === 'doctor') {
-          window.location.href = 'doctor.html';
-        } else {
-          window.location.href = 'patient.html';
-        }
-      } else {
-        errorMessage.textContent = 'Invalid credentials!';
-        errorMessage.style.display = 'block';
-      }
-    });
-  </script>
-  
+  errorMessage.style.display = 'none';
+  if(role === 'doctor'){
+    window.location.href = 'doctor.html'; // Doctor page
+} else if(role === 'patient'){
+    window.location.href = 'patient.html'; // Patient page
+}
+});
+</script>
+
+
 </body>
 </html>
