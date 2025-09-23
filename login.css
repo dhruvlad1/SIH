@@ -3,9 +3,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url("ayurveda-india-symbol-indian-background-theme_1279562-5309.jpg");
-  background-size: cover;
+  min-height: 100vh;
 }
 
 .login-container {

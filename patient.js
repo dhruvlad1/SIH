@@ -1,139 +1,90 @@
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => section.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+}
+
+// Ensure the DOM is fully loaded before running the script
 document.addEventListener('DOMContentLoaded', () => {
-
-    /* ---------- Section Switching ---------- */
-    const sidebarItems = document.querySelectorAll('.sidebar li');
-    const quickActionButtons = document.querySelectorAll('.quick-actions button');
-
-    function showSection(sectionId) {
-        // Hide all sections
-        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-
-        // Show the requested section
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-        }
-
-        // Update active class on sidebar items
-        sidebarItems.forEach(li => {
-            if (li.dataset.section === sectionId) {
-                li.classList.add('active');
-            } else {
-                li.classList.remove('active');
-            }
-        });
-    }
-
-    // Event listeners for sidebar navigation
-    sidebarItems.forEach(li => {
-        li.addEventListener('click', () => {
-            showSection(li.dataset.section);
-        });
-    });
-
-    // Event listeners for quick action buttons
-    quickActionButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetSection = button.dataset.action;
-            showSection(targetSection);
-        });
-    });
-
-    // Initially show the dashboard section
     showSection('dashboard');
 
-    /* ---------- Dark Mode Toggle ---------- */
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-        });
-    }
-
-    /* ---------- Calendar Logic ---------- */
-    const calendarEl = document.getElementById('calendar');
+    // Calendar variables
+    const calendar = document.getElementById('calendar');
     const monthYearLabel = document.getElementById('monthYear');
     const prevBtn = document.getElementById('prevMonth');
     const nextBtn = document.getElementById('nextMonth');
 
-    // Use a date object representing the current month for initialization
-    let currentDate = new Date();
-
-    // Sample data for booked dates
+    let currentDate = new Date(2025, 8, 1); // Start with Sep 2025
     const bookedDatesMap = {
         '2025-09': [5, 12, 18],
         '2025-10': [2, 10, 15]
     };
 
+    // Generate calendar for a month
     function generateCalendar(date) {
-        if (!calendarEl || !monthYearLabel) return;
+        calendar.innerHTML = '';
 
-        calendarEl.innerHTML = '';
         const year = date.getFullYear();
         const month = date.getMonth();
-        monthYearLabel.textContent = date.toLocaleString('default', {
-            month: 'long',
-            year: 'numeric'
-        });
-
-        const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        weekdays.forEach(d => {
-            const div = document.createElement('div');
-            div.textContent = d;
-            div.classList.add('weekday');
-            calendarEl.appendChild(div);
-        });
+        monthYearLabel.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
 
         const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        weekdays.forEach(day => {
+            const div = document.createElement('div');
+            div.textContent = day;
+            div.classList.add('weekday');
+            calendar.appendChild(div);
+        });
+
+        // Blank days before first day
         for (let i = 0; i < firstDay; i++) {
-            calendarEl.appendChild(document.createElement('div'));
+            const blank = document.createElement('div');
+            calendar.appendChild(blank);
         }
 
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const key = `${year}-${String(month + 1).padStart(2, '0')}`;
-        const bookedDays = bookedDatesMap[key] || [];
-        const today = new Date();
-
         for (let i = 1; i <= daysInMonth; i++) {
-            const dayEl = document.createElement('div');
-            dayEl.textContent = i;
-            dayEl.classList.add('day');
+            const day = document.createElement('div');
+            day.textContent = i;
 
-            // Add 'today' class if it's the current date
-            if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-                dayEl.classList.add('today');
-            }
+            const key = `${year}-${String(month + 1).padStart(2, '0')}`;
+            const booked = bookedDatesMap[key] || [];
 
-            // Add 'weekend' class
+            // Weekend
             const dayOfWeek = new Date(year, month, i).getDay();
-            if (dayOfWeek === 0 || dayOfWeek === 6) {
-                dayEl.classList.add('weekend');
+            if (dayOfWeek === 0 || dayOfWeek === 6) day.classList.add('weekend');
+
+            // Today
+            const today = new Date();
+            if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                day.classList.add('today');
             }
 
-            // Check if the day is booked
-            if (bookedDays.includes(i)) {
-                dayEl.classList.add('booked');
-                dayEl.setAttribute('title', 'Booked');
+            // Booked dates
+            if (booked.includes(i)) {
+                day.classList.add('booked');
             } else {
-                dayEl.addEventListener('click', () => {
+                day.addEventListener('click', () => {
                     alert(`You selected ${i} ${date.toLocaleString('default', { month: 'long' })} ${year}`);
                 });
             }
 
-            calendarEl.appendChild(dayEl);
+            calendar.appendChild(day);
         }
     }
 
+    // Navigation buttons
     prevBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
         generateCalendar(currentDate);
     });
-
     nextBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() + 1);
         generateCalendar(currentDate);
     });
 
+    // Initialize the calendar
     generateCalendar(currentDate);
-
 });
