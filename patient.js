@@ -4,26 +4,22 @@ function showSection(sectionId) {
     document.getElementById(sectionId).classList.add('active');
 }
 
-// Ensure the DOM is fully loaded before running the script
 document.addEventListener('DOMContentLoaded', () => {
     showSection('dashboard');
 
-    // Calendar variables
     const calendar = document.getElementById('calendar');
     const monthYearLabel = document.getElementById('monthYear');
     const prevBtn = document.getElementById('prevMonth');
     const nextBtn = document.getElementById('nextMonth');
 
-    let currentDate = new Date(2025, 8, 1); // Start with Sep 2025
+    let currentDate = new Date(2025, 8, 1);
     const bookedDatesMap = {
         '2025-09': [5, 12, 18],
         '2025-10': [2, 10, 15]
     };
 
-    // Generate calendar for a month
     function generateCalendar(date) {
         calendar.innerHTML = '';
-
         const year = date.getFullYear();
         const month = date.getMonth();
         monthYearLabel.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
@@ -39,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
             calendar.appendChild(div);
         });
 
-        // Blank days before first day
         for (let i = 0; i < firstDay; i++) {
             const blank = document.createElement('div');
             calendar.appendChild(blank);
@@ -48,21 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 1; i <= daysInMonth; i++) {
             const day = document.createElement('div');
             day.textContent = i;
-
             const key = `${year}-${String(month + 1).padStart(2, '0')}`;
             const booked = bookedDatesMap[key] || [];
-
-            // Weekend
             const dayOfWeek = new Date(year, month, i).getDay();
             if (dayOfWeek === 0 || dayOfWeek === 6) day.classList.add('weekend');
-
-            // Today
             const today = new Date();
             if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
                 day.classList.add('today');
             }
-
-            // Booked dates
             if (booked.includes(i)) {
                 day.classList.add('booked');
             } else {
@@ -70,12 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert(`You selected ${i} ${date.toLocaleString('default', { month: 'long' })} ${year}`);
                 });
             }
-
             calendar.appendChild(day);
         }
     }
 
-    // Navigation buttons
     prevBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
         generateCalendar(currentDate);
@@ -85,6 +71,5 @@ document.addEventListener('DOMContentLoaded', () => {
         generateCalendar(currentDate);
     });
 
-    // Initialize the calendar
     generateCalendar(currentDate);
 });
