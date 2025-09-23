@@ -3,7 +3,10 @@ function showSection(sectionId) {
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.getElementById(sectionId).classList.add('active');
 }
-showSection('dashboard');
+
+// Ensure the DOM is fully loaded before running the script
+document.addEventListener('DOMContentLoaded', () => {
+    showSection('dashboard');
 
 // Dark Mode Toggle
 document.getElementById('darkModeToggle').addEventListener('click', () => {

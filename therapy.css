@@ -1,0 +1,90 @@
+/* therapy.css */
+
+.therapy-header {
+    text-align: center;
+    padding: 3rem 0;
+    background-color: var(--secondary-color);
+}
+
+.therapy-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.therapy-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem 0;
+}
+
+.therapy-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.therapy-section h3 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    text-align: center;
+}
+
+.therapy-image {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.therapy-image:hover {
+    transform: scale(1.02);
+}
+
+.therapy-text {
+    flex: 1;
+}
+
+.therapy-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.therapy-text ul li {
+    background-color: #eaf5f2; /* Light green background for list items */
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.therapy-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Two-column layout on larger screens */
+@media (min-width: 768px) {
+    .therapy-section.two-column {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .therapy-section.two-column.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .therapy-section h3 {
+        text-align: left;
+    }
+
+    .therapy-image {
+        flex-shrink: 0;
+    }
+}

@@ -14,6 +14,12 @@
 
   <!-- Chart.js (must load before doctor.js) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="doctor.css">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
   <div class="container">
@@ -80,17 +86,24 @@
         </div>
       </section>
 
-      <!-- Patients -->
-      <section id="patients" aria-hidden="true">
-        <h2>Patients</h2>
-        <input id="search" type="text" placeholder="Search patients..." aria-label="Search patients" />
-        <div class="patient-list" id="patientList">
-          <div class="patient-card">John Doe</div>
-          <div class="patient-card">Jane Smith</div>
-          <div class="patient-card">Arjun Mehta</div>
-          <div class="patient-card">Meera Patel</div>
-        </div>
-      </section>
+        <!-- Patients -->
+        <section id="patients">
+            <h1>Patients</h1>
+            <div class="patient-card">
+                <h3>John Doe</h3>
+                <p>Age: 32</p>
+                <p>Last Therapy: 20 Sep 2025 - Abhyanga</p>
+                <p>Next Appointment: 25 Sep 2025</p>
+                <button>View Full Records</button>
+            </div>
+            <div class="patient-card">
+                <h3>Jane Smith</h3>
+                <p>Age: 28</p>
+                <p>Last Therapy: 22 Sep 2025 - Shirodhara</p>
+                <p>Next Appointment: 26 Sep 2025</p>
+                <button>View Full Records</button>
+            </div>
+        </section>
 
       <!-- Therapy Progress -->
       <section id="progress" aria-hidden="true">

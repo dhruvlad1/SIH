@@ -45,7 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // default
-  showSection('dashboard');
+  
+// Ensure the DOM is fully loaded before running the script
+document.addEventListener('DOMContentLoaded', () => {
+    showSection('dashboard');
 
   /* ---------- Dark mode toggle ---------- */
   const toggleDark = $('#toggleDark');
@@ -137,17 +140,29 @@ document.addEventListener('DOMContentLoaded', () => {
       calendarEl.appendChild(el);
     });
 
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // blanks
-    for (let i = 0; i < firstDay; i++) {
-      const blank = document.createElement('div');
-      calendarEl.appendChild(blank);
-    }
+        const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        weekdays.forEach(day => {
+            const div = document.createElement('div');
+            div.textContent = day;
+            div.classList.add('weekday');
+            calendar.appendChild(div);
+        });
 
-    const key = `${year}-${String(month+1).padStart(2,'0')}`;
-    const booked = bookedDatesMap[key] || [];
+        // Blank days before first day
+        for (let i = 0; i < firstDay; i++) {
+            const blank = document.createElement('div');
+            calendar.appendChild(blank);
+        }
+
+        for (let i = 1; i <= daysInMonth; i++) {
+            const day = document.createElement('div');
+            day.textContent = i;
+
+            const key = `${year}-${String(month + 1).padStart(2, '0')}`;
+            const booked = bookedDatesMap[key] || [];
 
     for (let d = 1; d <= daysInMonth; d++) {
       const dayEl = document.createElement('div');
@@ -175,15 +190,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  prevBtn?.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    generateCalendar(currentDate);
-  });
-
-  nextBtn?.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    generateCalendar(currentDate);
-  });
+    // Navigation buttons
+    prevBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        generateCalendar(currentDate);
+    });
+    nextBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        generateCalendar(currentDate);
+    });
 
   // initial render
   generateCalendar(currentDate);

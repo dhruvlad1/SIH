@@ -1,7 +1,5 @@
+/* login.css */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f9f8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,69 +9,64 @@ body {
 }
 
 .login-container {
-  background-color: #ffffff;
-  padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 350px;
-}
-
-.login-container h2 {
-  margin-bottom: 20px;
-  color: #3fa796;
+  background-color: white;
+  padding: 2.5rem 3rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 400px;
   text-align: center;
 }
 
+.login-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 .input-group label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .input-group input,
 .input-group select {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.login-btn {
-  width: 100%;
-  background-color: #3fa796;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
   font-size: 1rem;
+  transition: border-color 0.3s ease;
 }
 
-.login-btn:hover {
-  background-color: #33917f;
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--secondary-color);
+}
+
+.btn-login {
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .error-message {
   color: #d93025;
-  margin-bottom: 10px;
-  display: none;
-  text-align: center;
+  margin-bottom: 1rem;
   font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .signup-link {
-  text-align: center;
-  margin-top: 10px;
+  margin-top: 1.5rem;
   font-size: 0.9rem;
 }
+
 .signup-link a {
-  color: #3fa796;
-  text-decoration: none;
-}
-.signup-link a:hover {
-  text-decoration: underline;
+  font-weight: 600;
 }
