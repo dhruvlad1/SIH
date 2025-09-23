@@ -3,6 +3,15 @@ function showSection(sectionId) {
     document.getElementById(sectionId).classList.add('active');
 }
 showSection('dashboard');
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  // Redirect to login page
+  window.location.href = 'login.html';
+});
+document.getElementById('home').addEventListener('click', () => {
+  // Redirect to login page
+  window.location.href = 'index.html';
+});
+
 
 // Dark Mode Toggle
 document.getElementById('darkModeToggle').addEventListener('click', () => {
