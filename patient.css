@@ -1,23 +1,9 @@
-/* Reset & Base */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
+    margin: 0;
     font-family: 'Roboto', sans-serif;
+    display: flex;
     background-color: #f0f8f5;
-    color: #000;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.container {
-    display: flex;
-    flex: 1;
+    transition: all 0.3s;
 }
 
 /* Sidebar */
@@ -26,30 +12,13 @@ body {
     background-color: #3fa796;
     color: white;
     padding: 20px;
+    height: 100vh;
     flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
 }
 
 .sidebar h2 {
     text-align: center;
-    margin-bottom: 20px;
-}
-
-.sidebar button {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #2e7c68;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.sidebar button:hover {
-    background-color: #225a4d;
+    margin-bottom: 30px;
 }
 
 .sidebar ul {
@@ -62,11 +31,7 @@ body {
     margin: 10px 0;
     cursor: pointer;
     border-radius: 5px;
-    transition: 0.3s ease;
-}
-
-.sidebar li.active {
-    background-color: #2e7c68;
+    transition: 0.3s;
 }
 
 .sidebar li:hover {
@@ -99,18 +64,13 @@ section.active {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s;
 }
 
 .tile:hover {
     transform: translateY(-5px);
-}
-
-/* Quick Actions */
-.quick-actions button {
-    margin-right: 10px;
 }
 
 /* Cards */
@@ -119,7 +79,7 @@ section.active {
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 /* Progress bar */
@@ -134,7 +94,7 @@ section.active {
 .progress {
     height: 20px;
     background-color: #3fa796;
-    transition: width 0.5s ease;
+    transition: width 0.5s;
 }
 
 /* Calendar */
@@ -157,7 +117,7 @@ section.active {
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
 #calendar div.weekday {
@@ -181,7 +141,7 @@ section.active {
     background-color: #d3f0e0;
 }
 
-/* Timeline */
+/* Timeline for medical records */
 .timeline {
     border-left: 3px solid #3fa796;
     margin-left: 20px;
@@ -216,7 +176,7 @@ section.active {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .avatar {
@@ -241,30 +201,15 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #2e7c68;
 }
 
-/* Footer */
-.footer {
-    position: fixed;
-    bottom: 10px;
-    left: 250px;
-    font-size: 14px;
-    color: #555;
-    font-family: 'Roboto', sans-serif;
-    background: transparent;
-    z-index: 1000;
-    text-align: center;
-    width: calc(100% - 250px);
-}
-
 /* Responsive */
 @media (max-width: 768px) {
-    .container {
+    body {
         flex-direction: column;
     }
     .sidebar {
@@ -278,65 +223,4 @@ button:hover {
     .avatar {
         margin-bottom: 15px;
     }
-    .footer {
-        position: static;
-        width: 100%;
-        margin-top: 20px;
-    }
-}
-
-/* Dark Mode */
-body.dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-}
-
-body.dark-mode .sidebar {
-    background-color: #1f1f1f;
-    color: #ffffff;
-}
-
-body.dark-mode .sidebar li:hover {
-    background-color: #333333;
-}
-
-body.dark-mode .tile,
-body.dark-mode .card,
-body.dark-mode .profile-card {
-    background-color: #1e1e1e;
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
-}
-
-body.dark-mode .progress {
-    background-color: #76c7b7;
-}
-
-body.dark-mode button {
-    background-color: #3fa796;
-    color: white;
-}
-
-body.dark-mode button:hover {
-    background-color: #2e7c68;
-}
-
-body.dark-mode #calendar div.weekday {
-    color: #bbbbbb;
-}
-
-body.dark-mode #calendar div.weekend {
-    background-color: #2a2a2a;
-}
-
-body.dark-mode #calendar div.today {
-    background-color: #ffb74d;
-}
-
-body.dark-mode #calendar div.booked {
-    background-color: #e57373;
-    color: white;
-}
-
-body.dark-mode .footer {
-    color: #999;
 }
