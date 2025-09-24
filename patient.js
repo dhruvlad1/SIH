@@ -1,60 +1,83 @@
-function showSection(sectionId) {
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById(sectionId).classList.add('active');
-}
-showSection('dashboard');
-document.getElementById('logoutBtn').addEventListener('click', () => {
-  // Redirect to login page
-  window.location.href = 'login.html';
-});
-document.getElementById('home').addEventListener('click', () => {
-  // Redirect to login page
-  window.location.href = 'index.html';
-});
+document.addEventListener('DOMContentLoaded', () => {
+    // --- User and Page Elements ---
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const navItems = document.querySelectorAll('.sidebar-nav li');
+    const sections = document.querySelectorAll('.main-content section');
+    
+    // --- Buttons ---
+    const logoutBtn = document.getElementById('logoutBtn');
+    const homeBtn = document.getElementById('homeBtn');
+    const darkModeToggle = document.getElementById('darkModeToggle');
 
+    // --- Dynamic Content Elements ---
+    const welcomeMessage = document.getElementById('welcome-message');
+    const profileName = document.getElementById('profile-name');
+    const profileEmail = document.getElementById('profile-email');
+    const profileAvatar = document.getElementById('profile-avatar');
 
-// Dark Mode Toggle
-document.getElementById('darkModeToggle').addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-});
+    // --- Initial Setup ---
+    if (loggedInUser) {
+        const patientName = loggedInUser.name.split(' ')[0]; // Get first name
+        welcomeMessage.textContent = `Welcome, ${patientName}`;
+        profileName.textContent = loggedInUser.name;
+        profileEmail.textContent = loggedInUser.email;
+        profileAvatar.textContent = loggedInUser.name.charAt(0).toUpperCase();
+    } else {
+        // If no one is logged in, redirect to login page
+        window.location.href = 'login.html';
+    }
 
-// Calendar
-const calendar = document.getElementById('calendar');
-const monthYearLabel = document.getElementById('monthYear');
-const prevBtn = document.getElementById('prevMonth');
-const nextBtn = document.getElementById('nextMonth');
+    // --- Navigation Logic ---
+    function showSection(sectionId) {
+        // Hide all sections
+        sections.forEach(section => section.classList.remove('active'));
+        // Deactivate all nav items
+        navItems.forEach(item => item.classList.remove('active'));
 
-let currentDate = new Date(2025, 8, 1);
-const bookedDatesMap = { '2025-09':[5,12,18], '2025-10':[2,10,15] };
+        // Show the target section
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
 
-function generateCalendar(date) {
-    calendar.innerHTML = '';
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    monthYearLabel.textContent = date.toLocaleString('default',{month:'long',year:'numeric'});
+        // Activate the target nav item
+        const targetNavItem = document.querySelector(`[data-section="${sectionId}"]`);
+        if (targetNavItem) {
+            targetNavItem.classList.add('active');
+        }
+    }
 
-    ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => {
-        const div=document.createElement('div'); div.textContent=d; div.classList.add('weekday'); calendar.appendChild(div);
+    // Event listeners for sidebar navigation
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const sectionId = item.getAttribute('data-section');
+            showSection(sectionId);
+        });
     });
 
-    const firstDay = new Date(year,month,1).getDay();
-    for(let i=0;i<firstDay;i++) calendar.appendChild(document.createElement('div'));
+    // --- Button Functionality ---
+    logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('loggedInUser');
+        window.location.href = 'login.html';
+    });
 
-    const daysInMonth = new Date(year,month+1,0).getDate();
-    for(let i=1;i<=daysInMonth;i++){
-        const day=document.createElement('div'); day.textContent=i;
-        const key=`${year}-${String(month+1).padStart(2,'0')}`;
-        const booked=bookedDatesMap[key]||[];
-        const dayOfWeek=new Date(year,month,i).getDay();
-        if(dayOfWeek===0||dayOfWeek===6) day.classList.add('weekend');
-        const today=new Date();
-        if(i===today.getDate()&&month===today.getMonth()&&year===today.getFullYear()) day.classList.add('today');
-        if(booked.includes(i)) day.classList.add('booked');
-        else day.addEventListener('click',()=>alert(`You selected ${i} ${date.toLocaleString('default',{month:'long'})} ${year}`));
-        calendar.appendChild(day);
-    }
-}
+    homeBtn.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
 
-prevBtn.addEventListener('click',()=>{currentDate.setMonth(currentDate.getMonth()-1); generateCalendar(currentDate)});
-nextBtn.addEventListener('click',()=>{currentDate.setMonth(currentDate.getMonth()+1); generateCalendar(currentDate)});
-generateCalendar(currentDate);
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const icon = darkModeToggle.querySelector('i');
+        if (document.body.classList.contains('dark-mode')) {
+            icon.className = 'ri-sun-line';
+            darkModeToggle.innerHTML = `<i class="ri-sun-line"></i> Light Mode`;
+        } else {
+            icon.className = 'ri-moon-line';
+            darkModeToggle.innerHTML = `<i class="ri-moon-line"></i> Dark Mode`;
+        }
+    });
+
+    // --- Expose showSection to global scope for inline onclick attributes ---
+    // This ensures your existing "Book Appointment" button continues to work
+    window.showSection = showSection;
+});
