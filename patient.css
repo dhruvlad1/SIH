@@ -13,7 +13,7 @@
     --border-color: #e0e0e0;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --font-primary: 'Poppins', sans-serif;
-    
+
     /* Dark Mode Variables */
     --dark-bg: #1a2a2c;
     --dark-card-bg: #2c3e50;
@@ -150,7 +150,12 @@ body.dark-mode {
     border-radius: 12px;
     box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover, .tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
 .tiles {
@@ -172,6 +177,7 @@ body.dark-mode {
     color: var(--primary-color);
 }
 
+/* Quick Action Buttons */
 .quick-actions button {
     padding: 12px 28px;
     border-radius: 50px;
@@ -210,7 +216,9 @@ body.dark-mode {
 .profile-info p { margin-bottom: 0.5rem; }
 
 /* Dark Mode Styles */
-body.dark-mode .sidebar, body.dark-mode .card, body.dark-mode .tile {
+body.dark-mode .sidebar,
+body.dark-mode .card,
+body.dark-mode .tile {
     background-color: var(--dark-card-bg);
     border-color: var(--dark-border);
 }
@@ -250,6 +258,6 @@ body.dark-mode .sidebar-footer button:hover {
         font-size: 0.8rem;
     }
     .main-content {
-        padding: 2rem 1.5rem 6rem; /* Add padding at the bottom for the nav bar */
+        padding: 2rem 1.5rem 6rem; /* Add bottom padding for fixed sidebar */
     }
 }

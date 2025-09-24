@@ -1,78 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Virechana Therapy</title>
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="therapy.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virechana Therapy - Panchakarma Wellness</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="therapy.css">
 </head>
 <body>
-  <nav class="main-nav">
-      <div class="logo">Panchakarma Wellness</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-          <a href="#">Therapies ▾</a>
-          <div class="dropdown-content">
-            <a href="vamana.html">Vamana</a>
-            <a href="virechana.html">Virechana</a>
-            <a href="basti.html">Basti</a>
-            <a href="nasya.html">Nasya</a>
-            <a href="raktamokshana.html">Raktamokshana</a>
-          </div>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-        <li class="login-logout"></li>
-      </ul>
+    <!-- Main Navigation -->
+    <nav class="main-nav" aria-label="Main Navigation">
+        <div class="logo">🌿 Panchakarma Wellness</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true" aria-expanded="false">Therapies ▾</a>
+                <div class="dropdown-content" role="menu">
+                    <a href="vamana.html">Vamana</a>
+                    <a href="virechana.html">Virechana</a>
+                    <a href="basti.html">Basti</a>
+                    <a href="nasya.html">Nasya</a>
+                    <a href="raktamokshana.html">Raktamokshana</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-logout"></li>
+        </ul>
     </nav>
 
-  <section class="therapy-header">
-    <h1>Virechana (Therapeutic Purgation)</h1>
-  </section>
+    <!-- Therapy Header -->
+    <header class="therapy-header">
+        <h1>Virechana (Therapeutic Purgation)</h1>
+    </header>
 
-  <section class="therapy-content container">
-    <div class="therapy-section two-column">
-      <div class="therapy-text">
-        <p><strong>Duration:</strong> 1 main day of purgation + 3–5 days prep + 2–3 days recovery.</p>
-        <h3>What it involves:</h3>
-        <ul>
-          <li>Similar preparation as Vamana.</li>
-          <li>Purgation medicine given once in the morning.</li>
-          <li>Rest & gradual diet for 2–3 days after.</li>
-        </ul>
-      </div>
-      <img src="virechana.jpg" alt="A depiction of Virechana therapy" class="therapy-image">
-    </div>
+    <!-- Therapy Content -->
+    <main class="therapy-content container">
+        <!-- Therapy Overview -->
+        <section class="therapy-section two-column">
+            <div class="therapy-text">
+                <p><strong>Duration:</strong> 1 main day of purgation + 3–5 days preparation + 2–3 days recovery.</p>
+                <h3>What it involves:</h3>
+                <ul>
+                    <li>Similar preparation as Vamana.</li>
+                    <li>Purgation medicine given once in the morning.</li>
+                    <li>Rest & gradual diet for 2–3 days after.</li>
+                </ul>
+            </div>
+            <img src="virechana.jpg" alt="A depiction of Virechana therapy procedure" class="therapy-image">
+        </section>
 
-    <div class="therapy-section two-column reverse">
-      <div class="therapy-text">
-        <h3>Benefits & Relevance:</h3>
-        <p>Beneficial for liver disorders, hyperacidity, skin diseases, digestive imbalance, and excess Pitta dosha. Used in therapeutic detox programs, hospitals, and corporate wellness packages.</p>
-        <h3>Main Sector of Influence:</h3>
-        <p>Digestive and hepatic health, detoxification of the GI tract.</p>
-      </div>
-      <img src="virechana-benefits.jpg" alt="Therapy benefits illustration" class="therapy-image">
-    </div>
-  </section>
-<footer>
-    <footer class="footer">
-  <div class="footer-content">
-    <h2 class="footer-logo">🌿 Panchakarma Wellness</h2>
-    <p class="footer-text">
-      Healing through nature’s wisdom – Ayurveda for a balanced life.
-    </p>
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#privacy">Privacy Policy</a>
-    </div>
-    
-      <p class="footer-copy">&copy; 2025 Panchakarma Wellness</p>
-    </div>
+        <!-- Therapy Benefits -->
+        <section class="therapy-section two-column reverse">
+            <div class="therapy-text">
+                <h3>Benefits & Relevance:</h3>
+                <p>Beneficial for liver disorders, hyperacidity, skin diseases, digestive imbalance, and excess Pitta dosha. Used in therapeutic detox programs, hospitals, and corporate wellness packages.</p>
+                <h3>Main Sector of Influence:</h3>
+                <p>Digestive and hepatic health, detoxification of the GI tract.</p>
+            </div>
+            <img src="virechana-benefits.jpg" alt="Illustration showing benefits of Virechana therapy" class="therapy-image">
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <h2 class="footer-logo">🌿 Panchakarma Wellness</h2>
+            <p class="footer-text">
+                Healing through nature’s wisdom – Ayurveda for a balanced life.
+            </p>
+            <nav class="footer-links" aria-label="Footer Links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <a href="#privacy">Privacy Policy</a>
+            </nav>
+            <p class="footer-copy">&copy; 2025 Panchakarma Wellness</p>
+        </div>
     </footer>
-    <script src="auth.js"></script>
 
+    <script src="auth.js"></script>
 </body>
 </html>

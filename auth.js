@@ -1,37 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Dark Mode Logic ---
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const currentTheme = localStorage.getItem('theme');
-    const body = document.body;
-    const icon = darkModeToggle.querySelector('i');
+    // ================================
+    // Dark Mode Logic
+    // ================================
+    (() => {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+        const savedTheme = localStorage.getItem('theme');
 
-    // Apply the saved theme on page load
-    if (currentTheme === 'dark') {
-        body.classList.add('dark-mode');
-        icon.classList.replace('ri-moon-line', 'ri-sun-line');
-    }
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                icon.classList.replace('ri-moon-line', 'ri-sun-line');
+            } else {
+                body.classList.remove('dark-mode');
+                icon.classList.replace('ri-sun-line', 'ri-moon-line');
+            }
+        };
 
-    // Add click listener for the toggle button
-    darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        
-        // Save the new theme preference and update the icon
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-            icon.classList.replace('ri-moon-line', 'ri-sun-line');
-        } else {
-            localStorage.setItem('theme', 'light');
-            icon.classList.replace('ri-sun-line', 'ri-moon-line');
-        }
-    });
+        // Apply saved theme on load
+        applyTheme(savedTheme || 'light');
+
+        // Toggle theme on button click
+        darkModeToggle.addEventListener('click', () => {
+            const isDark = body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            icon.classList.replace(isDark ? 'ri-moon-line' : 'ri-sun-line', isDark ? 'ri-sun-line' : 'ri-moon-line');
+        });
+    })();
 
 
-    // --- Professional Typing Animation ---
-    const typingElement = document.querySelector('.text-type__content');
-    
-    if (typingElement) {
-        // ... (The rest of the typing animation code remains the same)
+    // ================================
+    // Typing Animation
+    // ================================
+    (() => {
+        const typingElement = document.querySelector('.text-type__content');
+        if (!typingElement) return;
+
         const textArray = [
             "Restore Balance, Naturally.",
             "Discover Ancient Healing.",
@@ -41,14 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const deletingSpeed = 30;
         const pauseDuration = 2000;
         const initialDelay = 500;
+
         let currentTextIndex = 0;
         let currentCharIndex = 0;
         let isDeleting = false;
 
-        function type() {
+        const type = () => {
             const currentText = textArray[currentTextIndex];
-            const typingSpeed = baseTypingSpeed + (Math.random() - 0.5) * baseTypingSpeed;
-            let timeoutSpeed = typingSpeed;
+            let timeoutSpeed = baseTypingSpeed + (Math.random() - 0.5) * baseTypingSpeed;
 
             if (isDeleting) {
                 if (currentCharIndex > 0) {
@@ -69,33 +75,56 @@ document.addEventListener('DOMContentLoaded', () => {
                     timeoutSpeed = pauseDuration;
                 }
             }
+
             setTimeout(type, timeoutSpeed);
-        }
+        };
+
         setTimeout(type, initialDelay);
-    }
+    })();
 
-    // --- Sticky Navbar on Scroll ---
-    const nav = document.querySelector('.main-nav');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
 
-    // --- Scroll Animations ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    // ================================
+    // Sticky Navbar on Scroll
+    // ================================
+    (() => {
+        const nav = document.querySelector('.main-nav');
+
+        // Debounce function to improve scroll performance
+        const debounce = (func, wait = 10) => {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        };
+
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
-        });
-    }, {
-        threshold: 0.1
-    });
+        };
 
-    const elementsToAnimate = document.querySelectorAll('.fade-in-up');
-    elementsToAnimate.forEach(el => observer.observe(el));
+        window.addEventListener('scroll', debounce(handleScroll, 20));
+    })();
+
+
+    // ================================
+    // Fade-in Scroll Animations
+    // ================================
+    (() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // stop observing for performance
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const elements = document.querySelectorAll('.fade-in-up');
+        elements.forEach(el => observer.observe(el));
+    })();
 
 });

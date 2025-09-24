@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Doctor Dashboard</title>
+  <title>Doctor Dashboard | Panchakarma Wellness</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="doctor.css" />
@@ -12,153 +12,202 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Chart.js (must load before doctor.js) -->
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="flex-wrapping-cont">
-  <div class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar" aria-label="Main navigation">
-      <h2>Panchakarma</h2>
-      <ul>
-        <li data-section="dashboard" class="active" tabindex="0" role="button"><i class="fas fa-home"></i> Dashboard</li>
-        <li data-section="appointments" tabindex="0" role="button"><i class="fas fa-calendar"></i> Appointments</li>
-        <li data-section="patients" tabindex="0" role="button"><i class="fas fa-user-injured"></i> Patients</li>
-        <li data-section="progress" tabindex="0" role="button"><i class="fas fa-chart-line"></i> Therapy Progress</li>
-        <li data-section="profile" tabindex="0" role="button"><i class="fas fa-user-md"></i> Profile</li>
-        <li data-section="notifications" tabindex="0" role="button"><i class="fas fa-bell"></i> Notifications</li>
-        <li data-section="settings" tabindex="0" role="button"><i class="fas fa-cog"></i> Settings</li>
-      </ul>
-    </aside>
+    <div class="container">
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <header>
-        <h1 id="pageTitle">Dashboard</h1>
-        <div class="header-controls">
-          <button id= "home" class="logout-button">Home</button>
-          <button id="logoutBtn" class="logout-button">Logout</button>
-          <button id="toggleDark" aria-pressed="false" title="Toggle dark mode">🌙</button>
-        </div>
-      </header>
-
-      <!-- Dashboard -->
-      <section id="dashboard" class="active" aria-labelledby="pageTitle">
-        <h2 class="sr-only">Dashboard overview</h2>
-
-        <div class="tiles">
-          <div class="tile"><div class="tile-title">Patients Today</div><div class="tile-value">8</div></div>
-          <div class="tile"><div class="tile-title">Appointments</div><div class="tile-value">3</div></div>
-          <div class="tile"><div class="tile-title">Therapies</div><div class="tile-value">5</div></div>
-          <div class="tile"><div class="tile-title">Notifications</div><div class="tile-value">2</div></div>
-        </div>
-
-        <!-- Chart wrapper (explicit height ensures Chart.js can compute size) -->
-        <div class="chart-wrapper" role="img" aria-label="Therapy status chart">
-          <canvas id="therapyChart"></canvas>
-        </div>
-      </section>
-
-      <!-- Appointments -->
-      <section id="appointments" aria-hidden="true">
-        <h2>Appointments</h2>
-        <div class="card">
-          <h3>Today's Schedule</h3>
-          <ul>
-            <li>09:00 - John Doe - Abhyanga</li>
-            <li>10:30 - Jane Smith - Shirodhara</li>
-            <li>12:00 - Mike Lee - Nasya</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Manage Appointments</h3>
-          <div class="calendar-controls">
-            <button id="prevMonth">&lt; Prev</button>
-            <span id="monthYear" aria-live="polite"></span>
-            <button id="nextMonth">Next &gt;</button>
-          </div>
-          <div id="calendar" aria-label="Calendar grid"></div>
-        </div>
-      </section>
-
-      <!-- Patients -->
-      <section id="patients" aria-hidden="true">
-        <h2>Patients</h2>
-        <input id="search" type="text" placeholder="Search patients..." aria-label="Search patients" />
-        <div class="patient-list" id="patientList">
-          <div class="patient-card">John Doe</div>
-          <div class="patient-card">Jane Smith</div>
-          <div class="patient-card">Arjun Mehta</div>
-          <div class="patient-card">Meera Patel</div>
-        </div>
-      </section>
-
-      <!-- Therapy Progress -->
-      <section id="progress" aria-hidden="true">
-        <h2>Therapy Progress</h2>
-        <div class="card">
-          <h3>John Doe</h3>
-          <div class="progress-bar"><div class="progress" style="width:60%"></div></div>
-          <p>60% completed</p>
-        </div>
-        <div class="card">
-          <h3>Jane Smith</h3>
-          <div class="progress-bar"><div class="progress" style="width:80%"></div></div>
-          <p>80% completed</p>
-        </div>
-      </section>
-
-      <!-- Profile -->
-      <section id="profile" aria-hidden="true">
-        <h2>Profile</h2>
-        <div class="profile-card">
-          <div class="avatar">D</div>
-          <div class="profile-info">
-            <p><strong>Name:</strong> Dr. Sharma</p>
-            <p><strong>Specialization:</strong> Panchakarma</p>
-            <p><strong>Email:</strong> dr.sharma@example.com</p>
-            <p><strong>Working Hours:</strong> 9 AM - 5 PM</p>
-            <button>Update Profile</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Notifications -->
-      <section id="notifications" aria-hidden="true">
-        <h2>Notifications</h2>
+      <!-- ===========================
+           Sidebar Navigation
+      =========================== -->
+      <aside class="sidebar" aria-label="Main navigation">
+        <h2>Panchakarma</h2>
         <ul>
-          <li>New appointment request from Mike Lee on 28 Sep 2025</li>
-          <li>Patient Jane Smith sent a message</li>
+          <li data-section="dashboard" class="active" tabindex="0" role="button">
+            <i class="fas fa-home"></i> Dashboard
+          </li>
+          <li data-section="appointments" tabindex="0" role="button">
+            <i class="fas fa-calendar"></i> Appointments
+          </li>
+          <li data-section="patients" tabindex="0" role="button">
+            <i class="fas fa-user-injured"></i> Patients
+          </li>
+          <li data-section="progress" tabindex="0" role="button">
+            <i class="fas fa-chart-line"></i> Therapy Progress
+          </li>
+          <li data-section="profile" tabindex="0" role="button">
+            <i class="fas fa-user-md"></i> Profile
+          </li>
+          <li data-section="notifications" tabindex="0" role="button">
+            <i class="fas fa-bell"></i> Notifications
+          </li>
+          <li data-section="settings" tabindex="0" role="button">
+            <i class="fas fa-cog"></i> Settings
+          </li>
         </ul>
-      </section>
+      </aside>
 
-      <!-- Settings -->
-      <section id="settings" aria-hidden="true">
-        <h2>Settings</h2>
-        <p>Profile & preferences</p>
-      </section>
-    </main>
-  </div>
+      <!-- ===========================
+           Main Content
+      =========================== -->
+      <main class="main-content">
+        <!-- Header -->
+        <header>
+          <h1 id="pageTitle">Dashboard</h1>
+          <div class="header-controls">
+            <button id="home" class="logout-button">Home</button>
+            <button id="logoutBtn" class="logout-button">Logout</button>
+            <button id="toggleDark" aria-pressed="false" title="Toggle dark mode">🌙</button>
+          </div>
+        </header>
 
-  <!-- Footer -->
-  <footer class="footer">
-  <div class="footer-content">
-    <h2 class="footer-logo">🌿 Panchakarma Wellness</h2>
-    <p class="footer-text">
-      Healing through nature’s wisdom – Ayurveda for a balanced life.
-    </p>
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#privacy">Privacy Policy</a>
+        <!-- ===========================
+             Dashboard Overview
+        =========================== -->
+        <section id="dashboard" class="active" aria-labelledby="pageTitle">
+          <h2 class="sr-only">Dashboard overview</h2>
+
+          <div class="tiles">
+            <div class="tile">
+              <div class="tile-title">Patients Today</div>
+              <div class="tile-value">8</div>
+            </div>
+            <div class="tile">
+              <div class="tile-title">Appointments</div>
+              <div class="tile-value">3</div>
+            </div>
+            <div class="tile">
+              <div class="tile-title">Therapies</div>
+              <div class="tile-value">5</div>
+            </div>
+            <div class="tile">
+              <div class="tile-title">Notifications</div>
+              <div class="tile-value">2</div>
+            </div>
+          </div>
+
+          <div class="chart-wrapper" role="img" aria-label="Therapy status chart">
+            <canvas id="therapyChart"></canvas>
+          </div>
+        </section>
+
+        <!-- ===========================
+             Appointments Section
+        =========================== -->
+        <section id="appointments" aria-hidden="true">
+          <h2>Appointments</h2>
+          <div class="card">
+            <h3>Today's Schedule</h3>
+            <ul>
+              <li>09:00 - John Doe - Abhyanga</li>
+              <li>10:30 - Jane Smith - Shirodhara</li>
+              <li>12:00 - Mike Lee - Nasya</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Manage Appointments</h3>
+            <div class="calendar-controls">
+              <button id="prevMonth">&lt; Prev</button>
+              <span id="monthYear" aria-live="polite"></span>
+              <button id="nextMonth">Next &gt;</button>
+            </div>
+            <div id="calendar" aria-label="Calendar grid"></div>
+          </div>
+        </section>
+
+        <!-- ===========================
+             Patients Section
+        =========================== -->
+        <section id="patients" aria-hidden="true">
+          <h2>Patients</h2>
+          <input id="search" type="text" placeholder="Search patients..." aria-label="Search patients" />
+          <div class="patient-list" id="patientList">
+            <div class="patient-card">John Doe</div>
+            <div class="patient-card">Jane Smith</div>
+            <div class="patient-card">Arjun Mehta</div>
+            <div class="patient-card">Meera Patel</div>
+          </div>
+        </section>
+
+        <!-- ===========================
+             Therapy Progress
+        =========================== -->
+        <section id="progress" aria-hidden="true">
+          <h2>Therapy Progress</h2>
+          <div class="card">
+            <h3>John Doe</h3>
+            <div class="progress-bar"><div class="progress" style="width:60%"></div></div>
+            <p>60% completed</p>
+          </div>
+          <div class="card">
+            <h3>Jane Smith</h3>
+            <div class="progress-bar"><div class="progress" style="width:80%"></div></div>
+            <p>80% completed</p>
+          </div>
+        </section>
+
+        <!-- ===========================
+             Profile Section
+        =========================== -->
+        <section id="profile" aria-hidden="true">
+          <h2>Profile</h2>
+          <div class="profile-card">
+            <div class="avatar">D</div>
+            <div class="profile-info">
+              <p><strong>Name:</strong> Dr. Sharma</p>
+              <p><strong>Specialization:</strong> Panchakarma</p>
+              <p><strong>Email:</strong> dr.sharma@example.com</p>
+              <p><strong>Working Hours:</strong> 9 AM - 5 PM</p>
+              <button>Update Profile</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===========================
+             Notifications Section
+        =========================== -->
+        <section id="notifications" aria-hidden="true">
+          <h2>Notifications</h2>
+          <ul>
+            <li>New appointment request from Mike Lee on 28 Sep 2025</li>
+            <li>Patient Jane Smith sent a message</li>
+          </ul>
+        </section>
+
+        <!-- ===========================
+             Settings Section
+        =========================== -->
+        <section id="settings" aria-hidden="true">
+          <h2>Settings</h2>
+          <p>Profile & preferences</p>
+        </section>
+      </main>
     </div>
-      <p class="footer-copy">&copy; 2025 Panchakarma Wellness</p>
-    </div>
+
+    <!-- ===========================
+         Footer
+    =========================== -->
+    <footer class="footer">
+      <div class="footer-content">
+        <h2 class="footer-logo">🌿 Panchakarma Wellness</h2>
+        <p class="footer-text">
+          Healing through nature’s wisdom – Ayurveda for a balanced life.
+        </p>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+          <a href="#privacy">Privacy Policy</a>
+        </div>
+        <p class="footer-copy">&copy; 2025 Panchakarma Wellness</p>
+      </div>
     </footer>
   </div>
+
+  <!-- Dashboard Scripts -->
   <script src="doctor.js"></script>
 </body>
 </html>

@@ -18,6 +18,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
+    transition: all 0.4s ease;
 }
 
 /* --- Image Panel (Left Side) --- */
@@ -33,6 +34,7 @@ body {
     text-align: center;
     padding: 2rem;
     position: relative;
+    overflow: hidden;
 }
 
 .image-panel::before {
@@ -42,7 +44,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+    z-index: 1;
 }
 
 .image-panel-content {
@@ -51,9 +54,9 @@ body {
 }
 
 .image-panel h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.7);
 }
 
 .image-panel p {
@@ -68,6 +71,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    background-color: #ffffff;
+    box-shadow: -5px 0 30px rgba(0,0,0,0.05);
 }
 
 .form-container {
@@ -76,10 +81,11 @@ body {
 }
 
 .form-container h2 {
-    color: #4A6C6F; /* Deep Teal from main site */
-    margin-bottom: 1.5rem;
+    color: #4A6C6F;
+    margin-bottom: 2rem;
     font-weight: 700;
     text-align: center;
+    font-size: 2rem;
 }
 
 /* --- Shared Form Element Styles --- */
@@ -88,21 +94,10 @@ body {
     margin-bottom: 1.75rem;
 }
 
-.input-group label {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: #888;
-    font-size: 1rem;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
-
 .input-group input,
 .input-group select {
     width: 100%;
-    padding: 10px;
+    padding: 14px 12px;
     border: none;
     border-bottom: 2px solid #ccc;
     background: transparent;
@@ -110,7 +105,18 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #333;
     outline: none;
-    border-radius: 0; /* Ensures only bottom border is visible */
+    transition: all 0.3s ease;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: 0.3s ease all;
 }
 
 /* Floating label effect */
@@ -118,10 +124,11 @@ body {
 .input-group input:not(:placeholder-shown) ~ label,
 .input-group select:focus ~ label,
 .input-group select:valid ~ label {
-    top: -10px;
+    top: -12px;
     left: 0;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: #4A6C6F;
+    font-weight: 600;
 }
 
 .input-group input:focus,
@@ -129,9 +136,10 @@ body {
     border-bottom-color: #4A6C6F;
 }
 
+/* --- Buttons --- */
 .auth-btn {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     border: none;
     border-radius: 50px;
     background: linear-gradient(90deg, #789A9C, #4A6C6F);
@@ -141,13 +149,15 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 1rem;
+    box-shadow: 0 5px 15px rgba(74,108,111,0.3);
 }
 
 .auth-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 7px 20px rgba(74, 108, 111, 0.4);
+    box-shadow: 0 10px 25px rgba(74,108,111,0.4);
 }
 
+/* --- Links --- */
 .links {
     display: flex;
     justify-content: space-between;
@@ -176,13 +186,14 @@ body {
     text-decoration: none;
 }
 
+/* --- Error Message --- */
 #error-message {
     color: #D83A56;
     background-color: #ffe0e6;
     border: 1px solid #ffc2cc;
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
-    margin-bottom: 1rem; /* Changed from margin-top */
+    margin-bottom: 1rem;
     display: none;
     font-size: 0.9rem;
 }
@@ -194,10 +205,23 @@ body {
     }
 
     .image-panel {
-        display: none; /* Hide image on smaller screens to focus on the form */
+        display: none; /* Focus on form */
     }
 
     .form-panel {
         min-height: 100vh;
+        box-shadow: none;
+        padding: 3rem 2rem;
     }
+
+    .form-container h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- Additional Hover & Focus Animations --- */
+.input-group input:focus,
+.input-group select:focus {
+    box-shadow: 0 4px 15px rgba(74,108,111,0.2);
+    border-bottom-color: #4A6C6F;
 }

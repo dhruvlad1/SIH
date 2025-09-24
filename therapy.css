@@ -1,8 +1,19 @@
-/* therapy.css */
+/* ==== Therapy Page Styles ==== */
 
+/* CSS Variables (ensure these exist in main CSS or root) */
+:root {
+    --primary-color: #3fa796;
+    --secondary-color: #d9f0ec;
+    --accent-color: #2c8072;
+    --text-color: #333;
+    --bg-list-item: #eaf5f2;
+    --font-family: 'Arial', sans-serif;
+}
+
+/* ==== Header ==== */
 .therapy-header {
     text-align: center;
-    padding: 3rem 0;
+    padding: 4rem 1rem;
     background-color: var(--secondary-color);
 }
 
@@ -10,14 +21,18 @@
     font-size: 2.5rem;
     color: var(--primary-color);
     margin: 0;
+    font-weight: 700;
 }
 
+/* ==== Therapy Content ==== */
 .therapy-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
-    padding: 3rem 0;
+    gap: 4rem;
+    padding: 3rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .therapy-section {
@@ -25,54 +40,68 @@
     flex-direction: column;
     gap: 2rem;
     align-items: center;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    width: 100%;
+    padding: 0 1.5rem;
 }
 
 .therapy-section h3 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: var(--accent-color);
+    margin-bottom: 1rem;
     text-align: center;
 }
 
+/* Therapy Image Styling */
 .therapy-image {
     width: 100%;
     max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .therapy-image:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
+/* Therapy Text */
 .therapy-text {
     flex: 1;
-}
-
-.therapy-text ul {
-    list-style: none;
-    padding: 0;
-}
-
-.therapy-text ul li {
-    background-color: #eaf5f2; /* Light green background for list items */
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
 }
 
 .therapy-text p {
     font-size: 1rem;
     line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 1rem;
 }
 
-/* Two-column layout on larger screens */
+.therapy-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.therapy-text ul li {
+    background-color: var(--bg-list-item);
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.therapy-text ul li:hover {
+    background-color: #d0ede7;
+}
+
+/* ==== Two-Column Layout for Larger Screens ==== */
 @media (min-width: 768px) {
     .therapy-section.two-column {
         flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
         text-align: left;
     }
 
@@ -86,5 +115,20 @@
 
     .therapy-image {
         flex-shrink: 0;
+    }
+}
+
+/* ==== Responsive Adjustments ==== */
+@media (max-width: 767px) {
+    .therapy-header h1 {
+        font-size: 2rem;
+    }
+
+    .therapy-section {
+        padding: 0 1rem;
+    }
+
+    .therapy-section h3 {
+        font-size: 1.5rem;
     }
 }
