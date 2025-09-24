@@ -1,0 +1,203 @@
+/* ==== Google Font Import ==== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- Base & Reset Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f9f9;
+}
+
+/* --- Main Split-Screen Container --- */
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* --- Image Panel (Left Side) --- */
+.image-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.image-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.image-panel-content {
+    position: relative;
+    z-index: 2;
+}
+
+.image-panel h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.image-panel p {
+    font-size: 1.1rem;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+/* --- Form Panel (Right Side) --- */
+.form-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container h2 {
+    color: #4A6C6F; /* Deep Teal from main site */
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* --- Shared Form Element Styles --- */
+.input-group {
+    position: relative;
+    margin-bottom: 1.75rem;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    outline: none;
+    border-radius: 0; /* Ensures only bottom border is visible */
+}
+
+/* Floating label effect */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group select:focus ~ label,
+.input-group select:valid ~ label {
+    top: -10px;
+    left: 0;
+    font-size: 0.8rem;
+    color: #4A6C6F;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-bottom-color: #4A6C6F;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #789A9C, #4A6C6F);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.auth-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(74, 108, 111, 0.4);
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.links a, .auth-link p {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.links a:hover, .auth-link a:hover {
+    color: #4A6C6F;
+}
+
+.auth-link {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.auth-link a {
+    color: #4A6C6F;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#error-message {
+    color: #D83A56;
+    background-color: #ffe0e6;
+    border: 1px solid #ffc2cc;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 1rem; /* Changed from margin-top */
+    display: none;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 850px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+
+    .image-panel {
+        display: none; /* Hide image on smaller screens to focus on the form */
+    }
+
+    .form-panel {
+        min-height: 100vh;
+    }
+}
